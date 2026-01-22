@@ -8,7 +8,7 @@
   <title>SOS STORE</title>
   <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
+<body data-page="home">
   <a class="skip" href="#main">تخطي للمحتوى</a>
 
   <header class="header" id="top">
@@ -22,9 +22,9 @@
       </a>
 
       <div class="header__actions">
-        <button class="iconBtn" id="themeBtn" type="button" aria-label="Theme">◐</button>
-        <button class="iconBtn" id="wishBtn" type="button" aria-label="Wishlist">♥ <span class="badge" id="wishCount">0</span></button>
-        <button class="iconBtn" id="cartBtn" type="button" aria-label="Cart">🛒 <span class="badge" id="cartCount">0</span></button>
+        <button class="iconBtn" id="themeBtn" type="button" aria-label="Theme" aria-pressed="false">◐</button>
+        <button class="iconBtn" id="wishBtn" type="button" aria-label="Wishlist" aria-haspopup="dialog" aria-controls="wishDrawer">♥ <span class="badge" id="wishCount">0</span></button>
+        <button class="iconBtn" id="cartBtn" type="button" aria-label="Cart" aria-haspopup="dialog" aria-controls="cartDrawer">🛒 <span class="badge" id="cartCount">0</span></button>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
             <h2 class="section__title">تواصل</h2>
             <p class="section__sub">تحويل مباشر إلى إنستقرام</p>
           </div>
-          <a class="btn btn--primary" target="_blank" rel="noopener" href="https://instagram.com/sos_sstorre">@sos_sstorre</a>
+          <a class="btn btn--primary" target="_blank" rel="noopener noreferrer" href="https://instagram.com/sos_sstorre">@sos_sstorre</a>
           <div class="muted">يفتح في تبويب جديد</div>
         </div>
       </div>
@@ -126,7 +126,7 @@
 
     <aside class="drawer" id="cartDrawer" aria-hidden="true">
       <div class="drawer__overlay" data-close="cart"></div>
-      <div class="drawer__panel">
+      <div class="drawer__panel" role="dialog" aria-label="Cart">
         <div class="drawer__head">
           <div class="drawer__title">سلة المشتريات</div>
           <button class="iconBtn" type="button" data-close="cart" aria-label="Close">✕</button>
@@ -145,7 +145,7 @@
 
     <aside class="drawer" id="wishDrawer" aria-hidden="true">
       <div class="drawer__overlay" data-close="wish"></div>
-      <div class="drawer__panel">
+      <div class="drawer__panel" role="dialog" aria-label="Wishlist">
         <div class="drawer__head">
           <div class="drawer__title">المفضلة</div>
           <button class="iconBtn" type="button" data-close="wish" aria-label="Close">✕</button>
@@ -159,7 +159,7 @@
 
     <aside class="drawer" id="collectionDrawer" aria-hidden="true" data-color="red">
       <div class="drawer__overlay" data-close="collection"></div>
-      <div class="drawer__panel drawer__panel--wide">
+      <div class="drawer__panel drawer__panel--wide" role="dialog" aria-label="Collection">
         <div class="drawer__head">
           <div>
             <div class="drawer__title" id="collectionTitle">Collection</div>
@@ -189,7 +189,7 @@
 
     <div class="modal" id="commentModal" aria-hidden="true">
       <div class="modal__overlay" data-close="comment"></div>
-      <div class="modal__panel" role="dialog" aria-label="Comments">
+      <div class="modal__panel" role="dialog" aria-label="Comments" aria-modal="true">
         <div class="modal__head">
           <div>
             <div class="modal__title" id="commentTitle">تعليقات</div>
