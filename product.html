@@ -1,32 +1,151 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="beige">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منتج</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="theme-color" content="#E7D9C4"/>
+  <meta name="description" content="SOS STORE - Product"/>
+  <title>SOS STORE | Product</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-<body>
+<body data-page="product">
+  <a class="skip" href="#main">تخطي للمحتوى</a>
 
-<header class="header">
-  <a href="javascript:history.back()">⬅ رجوع</a>
-</header>
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="SOS STORE">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__text">
+          <span class="brand__title">SOS STORE</span>
+          <span class="brand__sub" id="productCrumb">Product</span>
+        </span>
+      </a>
 
-<div class="slider">
-  <img id="slide" src="images/soon.png">
-  <div class="slider-controls">
-    <button onclick="prev()">‹</button>
-    <button onclick="next()">›</button>
-  </div>
-</div>
+      <div class="header__actions">
+        <button class="iconBtn" id="themeBtn" type="button" aria-label="Theme" aria-pressed="false">◐</button>
+        <button class="iconBtn" id="wishBtn" type="button" aria-label="Wishlist" aria-haspopup="dialog" aria-controls="wishDrawer">♥ <span class="badge" id="wishCount">0</span></button>
+        <button class="iconBtn" id="cartBtn" type="button" aria-label="Cart" aria-haspopup="dialog" aria-controls="cartDrawer">🛒 <span class="badge" id="cartCount">0</span></button>
+      </div>
+    </div>
 
-<div class="product-info">
-  <p>وصف المنتج يوضع هنا لاحقًا</p>
+    <div class="container controlbar">
+      <div class="controlbar__left">
+        <a class="btn btn--ghost btn--sm" href="index.html">⬅ رجوع</a>
+      </div>
+      <div class="controlbar__right">
+        <a class="btn btn--primary btn--sm" href="#details">تفاصيل</a>
+      </div>
+    </div>
+  </header>
 
-  <button onclick="like()">❤️ لايك</button>
-  <span id="likes">0</span>
-</div>
+  <main id="main" class="section">
+    <div class="container">
+      <div class="pageHead">
+        <div class="pageHead__row">
+          <h1 class="pageHead__title" id="productTitle">منتج</h1>
+          <span class="pill" id="productPrice">0 JD</span>
+        </div>
+        <p class="pageHead__sub" id="productTags"></p>
+      </div>
 
-<script src="script.js"></script>
+      <div class="productPage reveal" id="productStage">
+        <div class="slider" aria-label="Product slider">
+          <div class="slider__media">
+            <img id="productImage" src="" alt="SOS STORE" decoding="async">
+          </div>
+          <div class="slider__controls">
+            <button class="btn btn--ghost btn--sm" id="productPrev" type="button" aria-label="Previous">‹</button>
+            <div class="slider__dots" id="productDots" aria-hidden="true"></div>
+            <button class="btn btn--ghost btn--sm" id="productNext" type="button" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <section id="details" class="hero__card" style="box-shadow:var(--shadow);border-radius:var(--r)">
+          <h2 class="section__title" style="margin:0 0 8px">الوصف</h2>
+          <p class="section__sub" id="productDesc" style="margin:0 0 12px"></p>
+
+          <div class="product__actions">
+            <button class="actionBtn" id="productAdd" type="button">Add to cart</button>
+            <button class="actionBtn" id="productLike" type="button">Like</button>
+            <button class="actionBtn" id="productComment" type="button">Comment</button>
+          </div>
+
+          <div class="muted">اللايك/المفضلة/السلة/التعليقات تعمل بنفس مفاتيح LocalStorage الخاصة بالصفحة الرئيسية.</div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="footer" style="margin-top:18px">
+      <div class="container footer__inner">
+        <div>© <span id="year"></span> SOS STORE</div>
+        <a class="navLink" href="#top">أعلى</a>
+      </div>
+    </footer>
+
+    <button class="toTop" id="toTop" type="button" aria-label="Top">↑</button>
+
+    <aside class="drawer" id="cartDrawer" aria-hidden="true">
+      <div class="drawer__overlay" data-close="cart"></div>
+      <div class="drawer__panel" role="dialog" aria-label="Cart">
+        <div class="drawer__head">
+          <div class="drawer__title">سلة المشتريات</div>
+          <button class="iconBtn" type="button" data-close="cart" aria-label="Close">✕</button>
+        </div>
+        <div class="drawer__body" id="cartItems"></div>
+        <div class="drawer__foot">
+          <div class="drawer__row">
+            <span>الإجمالي</span>
+            <strong id="cartTotal">0</strong>
+          </div>
+          <button class="btn btn--primary" id="checkoutBtn" type="button">إتمام الطلب</button>
+          <button class="btn btn--ghost" id="clearCart" type="button">تفريغ السلة</button>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="drawer" id="wishDrawer" aria-hidden="true">
+      <div class="drawer__overlay" data-close="wish"></div>
+      <div class="drawer__panel" role="dialog" aria-label="Wishlist">
+        <div class="drawer__head">
+          <div class="drawer__title">المفضلة</div>
+          <button class="iconBtn" type="button" data-close="wish" aria-label="Close">✕</button>
+        </div>
+        <div class="drawer__body" id="wishItems"></div>
+        <div class="drawer__foot">
+          <button class="btn btn--ghost" id="clearWish" type="button">تفريغ المفضلة</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="modal" id="commentModal" aria-hidden="true">
+      <div class="modal__overlay" data-close="comment"></div>
+      <div class="modal__panel" role="dialog" aria-label="Comments" aria-modal="true">
+        <div class="modal__head">
+          <div>
+            <div class="modal__title" id="commentTitle">تعليقات</div>
+            <div class="modal__sub" id="commentSub">—</div>
+          </div>
+          <button class="iconBtn" type="button" data-close="comment" aria-label="Close">✕</button>
+        </div>
+
+        <div class="modal__body">
+          <form class="commentForm" id="commentForm" autocomplete="off">
+            <input class="input" id="commentName" maxlength="22" placeholder="اسمك" required/>
+            <input class="input" id="commentText" maxlength="140" placeholder="اكتب تعليق..." required/>
+            <button class="btn btn--primary" type="submit">إرسال</button>
+          </form>
+          <div class="comments" id="commentList"></div>
+        </div>
+
+        <div class="modal__foot">
+          <button class="btn btn--ghost" id="clearComments" type="button">مسح تعليقات هذا المنتج</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" aria-live="polite" aria-atomic="true"></div>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
